@@ -24,4 +24,10 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
+	@Override
+	public String checkId(String id) {
+		return memMapper.checkId(id);
+		
+	}
+
 }

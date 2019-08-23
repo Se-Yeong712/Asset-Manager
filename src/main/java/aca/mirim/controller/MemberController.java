@@ -18,16 +18,18 @@ public class MemberController {
 	@Autowired
 	MemberService memService;
 
+	//메인화면
 	@GetMapping("/index")
 	public void index() {
 		System.out.println("index get");
 	}
 	
+	//로그인
 	@GetMapping("/login")
 	public void login() {
 		System.out.println("login get");
 	}
-	
+
 	@PostMapping("/login")
 	public String loginpost(LoginDTO dto,HttpSession session) {
 		System.out.println("login post " + dto);
@@ -41,6 +43,46 @@ public class MemberController {
 		return "/index";
 	
 	}
+	
+	//회원가입
+	@GetMapping("/signup")
+	public void signup() {
+		System.out.println("signup get");
+	}
+	
+	@PostMapping("/signup")
+	public String signuppost(MemberVO vo) {
+		System.out.println("signup post ");
+		
+		
+		if(memService.checkId(vo.getId()) == null) {
+			System.out.println("if 같은 아이디 없음.");
+			memService.insertMember(vo);
+			
+			return "redirect:/index";
+		}
+		
+		return "/signup";
+	}
+	
+	//아이디중복체크
+	@GetMapping("/checkid")
+	public String checkId(HttpSession session) {
+		System.out.println("id get");
+		
+		return "/index";
+	}
+	
+	
+	//로그아웃
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		System.out.println("logout get");
+		session.removeAttribute("login");
+		
+		return "/index";
+	}
+	
 	
 	
 	
