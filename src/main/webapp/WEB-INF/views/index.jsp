@@ -16,5 +16,7 @@
 	<button onclick="location.href='/logout'">로그아웃</button>
 <%}%>
 
+<button onclick="location.href='/account'">계좌등록</button>
+
 </body>
 </html>

@@ -16,8 +16,9 @@ function blank(){
 	var phone=document.getElementById("phone").value;
 	var email=document.getElementById("email").value;
 	
+	
 	if(id=="" || pw=="" || pwchk=="" || name=="" || phone=="" ||email==""){
-		alert("모두 입력해주세요");
+		alert("빈칸없이 입력해주세요");
 		return false;
 	}
 	
@@ -33,8 +34,9 @@ function blank(){
 }
 
 function CheckId(){
-	window.name="CheckIdForm"
-	window.open("CheckId.jsp","CheckIdForm","width=500,height=300,resizable=no,scrollbars=no")
+	
+	var win = window.open("/checkid","CheckIdForm","width=500,height=300,resizable=no,scrollbars=no");
+
 }
 
 
@@ -44,8 +46,9 @@ function CheckId(){
 <body>
 <h2>회원가입</h2>
 <form onsubmit="return blank();" action="/signup" method="post">
-ID : <input type="text" name="id" id="id"> 
+ID : <input type="text" name="id" id="id" readonly="readonly"> 
 <input type="button" value="ID중복확인" onclick="CheckId()">
+<div id="result">아이디 중복확인을 해주세요.</div>
 <br>
 PW : <input type="password" name="pw" id="pw"> <br>
 pw확인 : <input type="password" id="pwchk"> <br>
@@ -60,7 +63,7 @@ pw확인 : <input type="password" id="pwchk"> <br>
 </form>
 
 
-
+${sessionScope.check }
 
 </body>
 </html>

@@ -51,26 +51,31 @@ public class MemberController {
 	}
 	
 	@PostMapping("/signup")
-	public String signuppost(MemberVO vo) {
+	public String signuppost(MemberVO vo, HttpSession session) {
 		System.out.println("signup post ");
 		
+		memService.insertMember(vo);
+		session.removeAttribute("check");
 		
-		if(memService.checkId(vo.getId()) == null) {
-			System.out.println("if 같은 아이디 없음.");
-			memService.insertMember(vo);
-			
-			return "redirect:/index";
-		}
-		
-		return "/signup";
+		return "redirect:/index";
 	}
 	
 	//아이디중복체크
 	@GetMapping("/checkid")
-	public String checkId(HttpSession session) {
+	public void checkId() {
 		System.out.println("id get");
 		
-		return "/index";
+	}
+	
+	@PostMapping("/checkid")
+	public void checkIdpost(String id, HttpSession session) {
+		System.out.println("id post");
+		
+		if(memService.checkId(id) == null) {
+			System.out.println("if 같은 아이디 없음.");
+			session.setAttribute("check","1");
+		}
+		
 	}
 	
 	
