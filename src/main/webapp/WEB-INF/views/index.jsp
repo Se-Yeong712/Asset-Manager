@@ -12,7 +12,7 @@
 <button onclick="location.href='/signup'">회원가입</button>
 <%}%>
 <% if(session.getAttribute("login")!=null){%>
-	${sessionScope.login }님 환영합니다.
+	${login }님 환영합니다.
 	<button onclick="location.href='/logout'">로그아웃</button>
 
 

@@ -7,13 +7,15 @@ import org.springframework.stereotype.Service;
 
 import aca.mirim.domain.AccountVO;
 import aca.mirim.domain.BankVO;
-import aca.mirim.mapper.AccountMapper;
+import aca.mirim.domain.DepositVO;
+import aca.mirim.domain.WithdrawVO;
+import aca.mirim.mapper.AssetMapper;
 
 @Service
-public class AccountServiceImpl implements AccountService{
+public class AssetServiceImpl implements AssetService{
 
 	@Autowired
-	AccountMapper accMapper;
+	AssetMapper accMapper;
 	
 	@Override
 	public void insertaccount(AccountVO vo) {
@@ -28,6 +30,17 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public List<AccountVO> getAccount(String id) {
 		return accMapper.getAccount(id);
+	}
+
+	@Override
+	public void insertdeposit(DepositVO vo) {
+		accMapper.insertdeposit(vo);
+	}
+
+	@Override
+	public void insertwithdraw(WithdrawVO vo) {
+		accMapper.insertwithdraw(vo);
+		
 	}
 
 }

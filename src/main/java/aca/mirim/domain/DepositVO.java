@@ -1,6 +1,6 @@
 package aca.mirim.domain;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class DepositVO {
 
