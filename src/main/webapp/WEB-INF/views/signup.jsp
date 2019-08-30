@@ -62,8 +62,5 @@ pw확인 : <input type="password" id="pwchk"> <br>
 <input type="reset" value="리셋">
 </form>
 
-
-${sessionScope.check }
-
 </body>
 </html>

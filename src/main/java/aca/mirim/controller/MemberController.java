@@ -1,5 +1,6 @@
 package aca.mirim.controller;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,9 +74,13 @@ public class MemberController {
 		
 		if(memService.checkId(id) == null) {
 			System.out.println("if 같은 아이디 없음.");
+			session.setAttribute("id",id);
 			session.setAttribute("check","1");
 		}
-		
+		else {
+			session.setAttribute("check","0");
+		}
+
 	}
 	
 	
@@ -86,10 +91,13 @@ public class MemberController {
 		session.removeAttribute("login");
 		
 		return "/index";
+		
+		
+		
 	}
 	
 	
-	
+
 	
 	
 }

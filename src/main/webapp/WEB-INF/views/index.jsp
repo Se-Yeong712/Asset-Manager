@@ -14,9 +14,14 @@
 <% if(session.getAttribute("login")!=null){%>
 	${sessionScope.login }님 환영합니다.
 	<button onclick="location.href='/logout'">로그아웃</button>
-<%}%>
+
 
 <button onclick="location.href='/account'">계좌등록</button>
+
+<button onclick="location.href='/deposit'">입금등록</button>
+<button onclick="location.href='/withdraw'">출금등록</button>
+<%}%>
+
 
 </body>
 </html>
