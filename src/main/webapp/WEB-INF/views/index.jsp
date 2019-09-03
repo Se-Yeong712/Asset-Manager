@@ -20,6 +20,8 @@
 
 <button onclick="location.href='/deposit'">입금등록</button>
 <button onclick="location.href='/withdraw'">출금등록</button>
+
+<button onclick="location.href='/breakdown'">내역보기</button>
 <%}%>
 
 

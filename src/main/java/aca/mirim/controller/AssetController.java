@@ -1,6 +1,6 @@
 package aca.mirim.controller;
 
-import java.util.List;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import aca.mirim.domain.AccountVO;
 import aca.mirim.domain.DepositVO;
+import aca.mirim.domain.Search;
 import aca.mirim.domain.WithdrawVO;
 import aca.mirim.service.AssetService;
 
@@ -69,6 +70,31 @@ public class AssetController {
 
 		
 		return "/index";
+	}
+	
+	
+	@GetMapping("/breakdown")
+	public void breakdown() {
+		System.out.println("breakdown get");
+		 
+	}
+	
+	@PostMapping("/breakdown")
+	public String breakdownpost(Search search, Model model, HttpSession session) {
+		System.out.println("breakdown post");
+		String id = (String)session.getAttribute("login");
+		if(search.getType()==1) {
+			System.out.println("search 1");
+			model.addAttribute("list",accService.getDeposit(id));
+		}
+		else if(search.getType()==2){
+			System.out.println("search 2");
+			model.addAttribute("list", accService.getWithdraw(id));
+		}
+		
+		
+		
+		return "/breakdown";
 	}
 	
 	

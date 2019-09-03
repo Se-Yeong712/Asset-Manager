@@ -43,4 +43,17 @@ public class AssetServiceImpl implements AssetService{
 		
 	}
 
+	@Override
+	public List<DepositVO> getDeposit(String id) {
+		return accMapper.getDeposit(id);
+	}
+
+	@Override
+	public List<WithdrawVO> getWithdraw(String id) {
+		return accMapper.getWithdraw(id);
+	}
+
+
+	
+
 }
