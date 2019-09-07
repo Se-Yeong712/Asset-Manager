@@ -2,6 +2,8 @@ package aca.mirim.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,7 @@ public class AssetController {
 	public void deposit(Model model, HttpSession session) {
 		System.out.println("deposit get");
 		String id = (String) session.getAttribute("login");
+
 		model.addAttribute("account",accService.getAccount(id));
 		
 	}

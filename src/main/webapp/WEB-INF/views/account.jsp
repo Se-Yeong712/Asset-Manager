@@ -10,7 +10,7 @@
 <body> 
 
 <form action="/account" method="post">
-계좌번호 : 
+계좌번호 : <input type="text" name="account">
 은행 : 
 <select name="bank">
 <c:forEach items="${bank }" var="bank">

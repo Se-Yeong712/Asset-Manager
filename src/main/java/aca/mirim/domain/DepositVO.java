@@ -4,41 +4,41 @@ import java.sql.Date;
 
 public class DepositVO {
 
-	private int dcode;
-	private Date depdate;
-	private String depaccount;
-	private int depamount;
-	private String depcate;
+	private int code;
+	private Date regdate;
+	private String account;
+	private int amount;
+	private String category;
 	private String id;
-	public int getDcode() {
-		return dcode;
+	public int getCode() {
+		return code;
 	}
-	public void setDcode(int dcode) {
-		this.dcode = dcode;
+	public void setCode(int code) {
+		this.code = code;
 	}
-	public Date getDepdate() {
-		return depdate;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setDepdate(Date depdate) {
-		this.depdate = depdate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
-	public String getDepaccount() {
-		return depaccount;
+	public String getAccount() {
+		return account;
 	}
-	public void setDepaccount(String depaccount) {
-		this.depaccount = depaccount;
+	public void setAccount(String account) {
+		this.account = account;
 	}
-	public int getDepamount() {
-		return depamount;
+	public int getAmount() {
+		return amount;
 	}
-	public void setDepamount(int depamount) {
-		this.depamount = depamount;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
-	public String getDepcate() {
-		return depcate;
+	public String getCategory() {
+		return category;
 	}
-	public void setDepcate(String depcate) {
-		this.depcate = depcate;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public String getId() {
 		return id;
@@ -48,9 +48,10 @@ public class DepositVO {
 	}
 	@Override
 	public String toString() {
-		return "DepositVO [dcode=" + dcode + ", depdate=" + depdate + ", depaccount=" + depaccount + ", depamount="
-				+ depamount + ", depcate=" + depcate + ", id=" + id + "]";
+		return "DepositVO [code=" + code + ", regdate=" + regdate + ", account=" + account + ", amount=" + amount
+				+ ", category=" + category + ", id=" + id + "]";
 	}
+	
 	
 	
 	

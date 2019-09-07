@@ -30,10 +30,10 @@
 </thead>
 <c:forEach items="${list }" var="list">
 	<tr>
-	<td>${list.depdate }</td>
-	<td>${list.depaccount }</td>
-	<td>${list.depamount}</td>
-	<td>${list.depcate }</td>
+	<td>${list.regdate }</td>
+	<td>${list.account }</td>
+	<td>${list.amount}</td>
+	<td>${list.category }</td>
 	</tr>
 
 </c:forEach>

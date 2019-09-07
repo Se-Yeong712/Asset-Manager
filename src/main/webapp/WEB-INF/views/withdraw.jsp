@@ -10,16 +10,16 @@
 <body>
 withdraw
 <form action ="/withdraw" method="post">
-날짜:<input type="date" name="withdate">
+날짜:<input type="date" name="regdate">
 계좌 : 
-<select name="withaccount">
+<select name="account">
 <c:forEach items="${account }" var="account">
 <option value=${account.account }>${account.account }</option>
 </c:forEach>
 </select>
 
-출금금액 : <input type="text" name="withamount">
-출금항목 : <input type="text" name="withcate">
+출금금액 : <input type="text" name="amount">
+출금항목 : <input type="text" name="category">
 회원 : <input type="text" name="id" value="${login }" readonly="readonly">
 
 <input type="submit" value="등록">

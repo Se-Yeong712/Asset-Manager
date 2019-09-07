@@ -4,42 +4,41 @@ import java.sql.Date;
 
 public class WithdrawVO {
 
-	private int wcode;
-	private Date withdate;
-	private String withaccount;
-	private int withamount;
-	private String withcate;
+	private int code;
+	private Date regdate;
+	private String account;
+	private int amount;
+	private String category;
 	private String id;
-	
-	public int getWcode() {
-		return wcode;
+	public int getCode() {
+		return code;
 	}
-	public void setWcode(int wcode) {
-		this.wcode = wcode;
+	public void setCode(int code) {
+		this.code = code;
 	}
-	public Date getWithdate() {
-		return withdate;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setWithdate(Date withdate) {
-		this.withdate = withdate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
-	public String getWithaccount() {
-		return withaccount;
+	public String getAccount() {
+		return account;
 	}
-	public void setWithaccount(String withaccount) {
-		this.withaccount = withaccount;
+	public void setAccount(String account) {
+		this.account = account;
 	}
-	public int getWithamount() {
-		return withamount;
+	public int getAmount() {
+		return amount;
 	}
-	public void setWithamount(int withamount) {
-		this.withamount = withamount;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
-	public String getWithcate() {
-		return withcate;
+	public String getCategory() {
+		return category;
 	}
-	public void setWithcate(String withcate) {
-		this.withcate = withcate;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public String getId() {
 		return id;
@@ -47,12 +46,13 @@ public class WithdrawVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
 	@Override
 	public String toString() {
-		return "WithdrawVO [wcode=" + wcode + ", withdate=" + withdate + ", withaccount=" + withaccount
-				+ ", withamount=" + withamount + ", withcate=" + withcate + ", id=" + id + "]";
+		return "WithdrawVO [code=" + code + ", regdate=" + regdate + ", account=" + account + ", amount=" + amount
+				+ ", category=" + category + ", id=" + id + "]";
 	}
+	
+	
 	
 	
 	

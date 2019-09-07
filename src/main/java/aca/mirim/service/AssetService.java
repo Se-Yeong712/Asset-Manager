@@ -9,25 +9,25 @@ import aca.mirim.domain.WithdrawVO;
 
 public interface AssetService {
 	
-	//ê³„ì¢Œë“±ë¡
-	public void insertaccount(AccountVO vo);
-	
-	//ì€í–‰ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
-	public List<BankVO> getBank();
-	
-	//ê³„ì¢Œëª©ë¡ ê°€ì ¸ì˜¤ê¸° 
-	public List<AccountVO> getAccount(String id);
-	
-	//ì…ê¸ˆë‚´ì—­ ë“±ë¡
-	public void insertdeposit(DepositVO vo);
-	
-	//ì¶œê·¼ë‚´ì—­ ë“±ë¡
-	public void insertwithdraw(WithdrawVO vo);
-	
-	//ì…ê¸ˆë‚´ì—­ ê°€ì ¸ì˜¤ê¸°
-	public List<DepositVO> getDeposit(String id);
-	
-	//ì¶œê¸ˆë‚´ì—­ ê°€ì ¸ì˜¤ê¸°
-	public List<WithdrawVO> getWithdraw(String id);
+		//°èÁÂµî·Ï
+		public void insertaccount(AccountVO vo);
+		
+		//ÀºÇà¸ñ·Ï °¡Á®¿À±â
+		public List<BankVO> getBank();
+		
+		//°èÁÂ¸ñ·Ï °¡Á®¿À±â 
+		public List<AccountVO> getAccount(String id);
+		
+		//ÀÔ±İ³»¿ª µî·Ï
+		public void insertdeposit(DepositVO vo);
+		
+		//Ãâ±Ù³»¿ª µî·Ï
+		public void insertwithdraw(WithdrawVO vo);
+		
+		//ÀÔ±İ³»¿ª °¡Á®¿À±â
+		public List<DepositVO> getDeposit(String id);
+		
+		//Ãâ±İ³»¿ª °¡Á®¿À±â
+		public List<WithdrawVO> getWithdraw(String id);
 	
 }

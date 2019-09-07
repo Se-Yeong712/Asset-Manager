@@ -12,16 +12,16 @@ deposit
 
 
 <form action ="/deposit" method="post">
-날짜:<input type="date" name="depdate">
+날짜:<input type="date" name="regdate">
 계좌 : 
-<select name="depaccount">
+<select name="account">
 <c:forEach items="${account }" var="account">
 <option value=${account.account }>${account.account }</option>
 </c:forEach>
 </select>
 
-입금금액 : <input type="text" name="depamount">
-입금항목 : <input type="text" name="depcate">
+입금금액 : <input type="text" name="amount">
+입금항목 : <input type="text" name="category">
 회원 : <input type="text" name="id" value="${login }" readonly="readonly">
 
 <input type="submit" value="등록">

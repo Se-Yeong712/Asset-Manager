@@ -21,10 +21,10 @@ public interface AssetMapper {
 	@Select("Select * FROM ACCOUNT WHERE id=#{id}")
 	public List<AccountVO> getAccount(String id);
 	
-	@Insert("INSERT INTO DEPOSIT(DEPDATE,DEPACCOUNT,DEPAMOUNT,DEPCATE,ID) VALUES(#{depdate},#{depaccount},#{depamount},#{depcate},#{id})")
+	@Insert("INSERT INTO DEPOSIT(REGDATE,ACCOUNT,AMOUNT,CATEGORY,ID) VALUES(#{regdate},#{account},#{amount},#{category},#{id})")
 	public void insertdeposit(DepositVO vo);
 	
-	@Insert("INSERT INTO WITHDRAW(WITHDATE,WITHACCOUNT,WITHAMOUNT,WITHCATE,ID) VALUES(#{withdate},#{withaccount},#{withamount},#{withcate},#{id})")
+	@Insert("INSERT INTO WITHDRAW(REGDATE,ACCOUNT,AMOUNT,CATEGORY,ID) VALUES(#{regdate},#{account},#{amount},#{category},#{id})")
 	public void insertwithdraw(WithdrawVO vo);
 	
 	@Select("SELECT * FROM DEPOSIT WHERE id=#{id}")
