@@ -4,25 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>AssetManagement</title>
 </head>
 <body>
-<% if(session.getAttribute("login")==null){%>
-<button onclick="location.href='/login'">로그인</button>
-<button onclick="location.href='/signup'">회원가입</button>
-<%}%>
-<% if(session.getAttribute("login")!=null){%>
-	${login }님 환영합니다.
-	<button onclick="location.href='/logout'">로그아웃</button>
 
-
-<button onclick="location.href='/account'">계좌등록</button>
-
-<button onclick="location.href='/deposit'">입금등록</button>
-<button onclick="location.href='/withdraw'">출금등록</button>
-
-<button onclick="location.href='/breakdown'">내역보기</button>
-<%}%>
+<jsp:include page="menu.jsp" flush="false"></jsp:include>
 
 
 </body>

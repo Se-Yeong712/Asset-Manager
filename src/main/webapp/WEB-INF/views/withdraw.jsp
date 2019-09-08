@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="menu.jsp" flush="false"></jsp:include>
 withdraw
 <form action ="/withdraw" method="post">
 날짜:<input type="date" name="regdate">

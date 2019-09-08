@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="menu.jsp" flush="false"></jsp:include>
 <h3>내역</h3>
 
 <form action="/breakdown" method="post">

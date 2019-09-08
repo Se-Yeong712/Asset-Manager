@@ -19,13 +19,13 @@ public class MemberController {
 	@Autowired
 	MemberService memService;
 
-	//메인화면
+
 	@GetMapping("/index")
 	public void index() {
 		System.out.println("index get");
 	}
 	
-	//로그인
+
 	@GetMapping("/login")
 	public void login() {
 		System.out.println("login get");
@@ -45,7 +45,7 @@ public class MemberController {
 	
 	}
 	
-	//회원가입
+
 	@GetMapping("/signup")
 	public void signup() {
 		System.out.println("signup get");
@@ -60,8 +60,7 @@ public class MemberController {
 		
 		return "redirect:/index";
 	}
-	
-	//아이디중복체크
+
 	@GetMapping("/checkid")
 	public void checkId() {
 		System.out.println("id get");
@@ -73,7 +72,7 @@ public class MemberController {
 		System.out.println("id post");
 		
 		if(memService.checkId(id) == null) {
-			System.out.println("if 같은 아이디 없음.");
+			System.out.println("if 媛숈� �븘�씠�뵒 �뾾�쓬.");
 			session.setAttribute("id",id);
 			session.setAttribute("check","1");
 		}
@@ -84,7 +83,7 @@ public class MemberController {
 	}
 	
 	
-	//로그아웃
+
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		System.out.println("logout get");

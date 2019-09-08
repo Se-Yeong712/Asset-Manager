@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body> 
-
+<jsp:include page="menu.jsp" flush="false"></jsp:include>
+<div class="container" style="margin-left:25%">
 <form action="/account" method="post">
 계좌번호 : <input type="text" name="account">
 은행 : 
@@ -24,6 +25,6 @@
 
 <input type="submit" value="계좌등록">
 </form>
-
+</div>
 </body>
 </html>

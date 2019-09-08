@@ -44,7 +44,10 @@ function CheckId(){
 
 </head>
 <body>
-<h2>회원가입</h2>
+<jsp:include page="menu.jsp" flush="false"></jsp:include>
+<div class="container bg-light" style="margin-left:23%; margin-top:2%; border-radius: 15px; width: 70%;">
+<p style="font-size:30px; text-align:center;">Sign Up</p>
+
 <form onsubmit="return blank();" action="/signup" method="post">
 ID : <input type="text" name="id" id="id" readonly="readonly"> 
 <input type="button" value="ID중복확인" onclick="CheckId()">
@@ -61,6 +64,6 @@ pw확인 : <input type="password" id="pwchk"> <br>
 <input type="submit" value="회원가입">
 <input type="reset" value="리셋">
 </form>
-
+</div>
 </body>
 </html>
