@@ -16,6 +16,7 @@ li a{
 	padding: 8px 8px;
 }
 
+
 </style>
 
 </head>
@@ -32,12 +33,18 @@ style="width: 18%; height:100%; position: fixed; border-radius: 15px;">
     <li class="nav-item">
       <a class="nav-link" href="/signup">회원가입</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/findinfo">정보찾기</a>
+    </li>
 <%}%>
 <% if(session.getAttribute("login")!=null){%>
 	${login }님 환영합니다.
 	<hr> 
 	<li class="nav-item">
       <a class="nav-link" href="/logout">로그아웃</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">정보수정</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/account">계좌등록</a>

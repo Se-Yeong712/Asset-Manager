@@ -46,24 +46,31 @@ function CheckId(){
 <body>
 <jsp:include page="menu.jsp" flush="false"></jsp:include>
 <div class="container bg-light" style="margin-left:23%; margin-top:2%; border-radius: 15px; width: 70%;">
-<p style="font-size:30px; text-align:center;">Sign Up</p>
+<br><p style="font-size:30px; text-align:center;">Sign Up</p>
 
 <form onsubmit="return blank();" action="/signup" method="post">
-ID : <input type="text" name="id" id="id" readonly="readonly"> 
-<input type="button" value="ID중복확인" onclick="CheckId()">
-<div id="result">아이디 중복확인을 해주세요.</div>
-<br>
-PW : <input type="password" name="pw" id="pw"> <br>
-pw확인 : <input type="password" id="pwchk"> <br>
-이름 : <input type="text" name="name" id="name"> <br>
-전화번호 : <input type="text" name="phone" id="phone"> <br>
-<font color="red">-는 빼고 입력해주세요</font> <br>
-이메일 : <input type="email" name="email" id="email"> <br>
+<div class="form-inline form-group">
+<input type="text" class="form-control" name="id" id="id" readonly="readonly" placeholder="User ID" style="border-radius: 25px; width: 40%"> 
+&nbsp;&nbsp; <input type="button" class="btn btn-light" style="border:1px solid; "value="ID중복확인" onclick="CheckId()">
+&nbsp;&nbsp;<div id="result">아이디 중복확인을 해주세요.</div>
+</div>
+<div class="form-inline form-group">
+<input type="password" class="form-control" placeholder="User Password" style="border-radius: 25px;" name="pw" id="pw"> <br>
+&nbsp;&nbsp;<input type="password" class="form-control" placeholder="User Password Check" style="border-radius: 25px;" id="pwchk"> <br>
+</div>
+<input type="text" class="form-control" placeholder="User Name" style="border-radius: 25px; width:30%" name="name" id="name"> <br>
+<div class="form-inline form-group">
+<input type="text" class="form-control" placeholder="User Phone" style="border-radius: 25px; width:60%" name="phone" id="phone">
+<font color="red">&nbsp;&nbsp;-는 빼고 입력해주세요</font> 
+</div>
+<input type="email" class="form-control" placeholder="User Email" style="border-radius: 25px; width:60%"name="email" id="email"> <br>
 
+<input type="submit" class="btn btn-primary" value="회원가입">
+<input type="reset" class="btn btn-primary" value="리셋">
 
-<input type="submit" value="회원가입">
-<input type="reset" value="리셋">
 </form>
+
+<br><br>
 </div>
 </body>
 </html>

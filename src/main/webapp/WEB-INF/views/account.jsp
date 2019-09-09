@@ -9,7 +9,8 @@
 </head>
 <body> 
 <jsp:include page="menu.jsp" flush="false"></jsp:include>
-<div class="container" style="margin-left:25%">
+<div class="container bg-light" style="margin-left:23%; margin-top:2%; border-radius: 15px; width: 70%;">
+<p style="font-size:30px; text-align:center;">account</p>
 <form action="/account" method="post">
 계좌번호 : <input type="text" name="account">
 은행 : 

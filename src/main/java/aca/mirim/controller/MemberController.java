@@ -1,13 +1,16 @@
 package aca.mirim.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import aca.mirim.domain.LoginDTO;
 import aca.mirim.domain.MemberVO;
@@ -72,7 +75,7 @@ public class MemberController {
 		System.out.println("id post");
 		
 		if(memService.checkId(id) == null) {
-			System.out.println("if 媛숈� �븘�씠�뵒 �뾾�쓬.");
+			System.out.println("if안 ID 사용가능.");
 			session.setAttribute("id",id);
 			session.setAttribute("check","1");
 		}
@@ -90,13 +93,47 @@ public class MemberController {
 		session.removeAttribute("login");
 		
 		return "/index";
-		
-		
-		
 	}
 	
 	
+	@GetMapping("/findinfo")
+	public void findinfo() {
+		System.out.println("find infomation get");
+	}
+	
+	
+	@PostMapping("/findinfo")
+	public void findinfopost() {
+		System.out.println("find info post");
+	}
+	
+	
+	
+	@PostMapping("/findid")
+	public String findid(String pw,String name,HttpSession session) {
+		System.out.println("find id "+ pw + name);
+		String id = memService.findid(pw, name);
+		session.setAttribute("result", id);
+		System.out.println("id");
+		
+		return "/findresult";
+		
+	}
+	
+	@PostMapping("/findpw")
+	public String findpw(String id, String name) {
+		System.out.println("find pw "+ id + name);
+		String pw = memService.findid(id, name);
+		System.out.println(pw);
+		return "/findresult";
+		
+	}
 
+	
+	@GetMapping("findresult")
+	public void findresult() {
+		System.out.println("findresult");
+	}
 	
 	
 }

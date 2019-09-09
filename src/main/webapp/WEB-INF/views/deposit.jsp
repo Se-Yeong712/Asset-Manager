@@ -9,8 +9,8 @@
 </head>
 <body>
 <jsp:include page="menu.jsp" flush="false"></jsp:include>
-deposit
-
+<div class="container bg-light" style="margin-left:23%; margin-top:2%; border-radius: 15px; width: 70%;">
+<p style="font-size:30px; text-align:center;">deposit</p>
 
 <form action ="/deposit" method="post">
 날짜:<input type="date" name="regdate">
@@ -28,7 +28,7 @@ deposit
 <input type="submit" value="등록">
 
 </form>
-
+</div>
 
 </body>
 </html>

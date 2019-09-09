@@ -9,7 +9,8 @@
 </head>
 <body>
 <jsp:include page="menu.jsp" flush="false"></jsp:include>
-<h3>내역</h3>
+<div class="container bg-light" style="margin-left:23%; margin-top:2%; border-radius: 15px; width: 70%;">
+<p style="font-size:30px; text-align:center;">Breakdown</p>
 
 <form action="/breakdown" method="post">
 	<select name="type">
@@ -38,7 +39,7 @@
 
 </c:forEach>
 </table>
-
+</div>
 
 </body>
 </html>

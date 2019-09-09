@@ -8,6 +8,7 @@ public interface MemberService {
 	public MemberVO login(LoginDTO dto);
 	public String checkId(String id);
 	public void insertMember(MemberVO vo);
-
+	public String findid(String pw, String name);
+	public String findpw(String id, String name);
 	
 }

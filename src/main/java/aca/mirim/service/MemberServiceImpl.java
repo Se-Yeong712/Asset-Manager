@@ -30,4 +30,14 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
+	@Override
+	public String findid(String pw, String name) {
+		return memMapper.findid(pw, name);
+	}
+
+	@Override
+	public String findpw(String id, String name) {
+		return memMapper.findpw(id, name);
+	}
+
 }

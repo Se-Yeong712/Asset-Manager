@@ -9,7 +9,9 @@
 </head>
 <body>
 <jsp:include page="menu.jsp" flush="false"></jsp:include>
-withdraw
+<div class="container bg-light" style="margin-left:23%; margin-top:2%; border-radius: 15px; width: 70%;">
+<p style="font-size:30px; text-align:center;">withdraw</p>
+
 <form action ="/withdraw" method="post">
 날짜:<input type="date" name="regdate">
 계좌 : 
@@ -27,6 +29,6 @@ withdraw
 
 </form>
 
-
+</div>
 </body>
 </html>
