@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import aca.mirim.domain.AccountVO;
 import aca.mirim.domain.DepositVO;
@@ -32,8 +34,14 @@ public class AssetController {
 	}
 	
 	@PostMapping("/account")
-	public String accountpost(AccountVO vo) {
+	public String accountpost(AccountVO vo,RedirectAttributes redirect) {
 		System.out.println("account post");
+		
+		if(accService.accountchk(vo.getAccount())) {
+			redirect.addAttribute("code", 2);
+			return "redirect:/fail";
+		}
+		
 		accService.insertaccount(vo);
 	
 		return "/index";
@@ -88,16 +96,67 @@ public class AssetController {
 		String id = (String)session.getAttribute("login");
 		if(search.getType()==1) {
 			System.out.println("search 1");
+			model.addAttribute("type","1");
 			model.addAttribute("list",accService.getDeposit(id));
 		}
 		else if(search.getType()==2){
 			System.out.println("search 2");
+			model.addAttribute("type","2");
 			model.addAttribute("list", accService.getWithdraw(id));
-		}
-		
-		
+		}	
 		
 		return "/breakdown";
+	}
+	
+	@GetMapping("/dep")
+	public String getdep(@RequestParam("code")int code, Model model,HttpSession session) {
+		
+		String id = (String)session.getAttribute("login");
+		
+		model.addAttribute("type","1");
+		model.addAttribute("content",accService.seldeposit(code));
+		model.addAttribute("account",accService.getAccount(id));
+		
+		return "/get";
+		
+	}
+	
+	@GetMapping("/with")
+	public String getwith(@RequestParam("code")int code, Model model,HttpSession session) {
+		
+		String id = (String)session.getAttribute("login");
+		
+		model.addAttribute("type","2");
+		model.addAttribute("content",accService.selwithdraw(code));
+		model.addAttribute("account",accService.getAccount(id));
+		
+		return "/get";
+		
+	}
+	
+	@GetMapping("/deletedep")
+	public String deletedep(@RequestParam("code")int code) {
+		accService.deletedeposit(code);
+		return "/breakdown";	
+	}
+	
+	@GetMapping("/deletewith")
+	public String deletewith(@RequestParam("code")int code) {
+		accService.deletewithdraw(code);
+		return "/breakdown";	
+	}
+	
+	
+	@PostMapping("/updatedep")
+	public String updatedep(DepositVO vo) {
+		accService.updatedeposit(vo);
+		return "/breakdown";	
+	}
+	
+	@PostMapping("/updatewith")
+	public String updatewith(WithdrawVO vo) {
+		accService.updatewithdraw(vo);
+		return "/breakdown";	
 	}
 	
 	

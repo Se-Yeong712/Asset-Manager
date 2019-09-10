@@ -9,23 +9,27 @@
 </head>
 <body> 
 <jsp:include page="menu.jsp" flush="false"></jsp:include>
-<div class="container bg-light" style="margin-left:23%; margin-top:2%; border-radius: 15px; width: 70%;">
-<p style="font-size:30px; text-align:center;">account</p>
-<form action="/account" method="post">
-계좌번호 : <input type="text" name="account">
-은행 : 
-<select name="bank">
+<div class="container bg-light" style="margin-left:30%; margin-top:2%; border-radius: 15px; width: 60%;">
+<br><p style="font-size:30px; text-align:center;">Account Register</p>
+
+<form action="/account" method="post" style="margin-left: 10%">
+<input type="text" name="account" class="form-control" style=" width:90%"placeholder="Account Number"><br>
+
+<div class="form-inline form-group">
+<select name="bank" class="form-control" style=" width:40%">
+<option hidden="true">은행선택</option>
 <c:forEach items="${bank }" var="bank">
 <option value=${bank.bank }>${bank.bank }</option>
 </c:forEach>
 </select>
-
-
-계좌이름 : <input type="text" name="aname">
-아이디 : <input type="text" name="id" value="${login }"readonly="readonly">
-
-<input type="submit" value="계좌등록">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="aname" class="form-control" style=" width:43%"  placeholder="Account Name"><br>
+</div>
+<input type="text" name="id" value="${login }"readonly="readonly" style="width:90%" class="form-control" placeholder="User ID">
+<br>
+<input type="submit" class="btn btn-primary" value="계좌등록">
 </form>
+<br>
 </div>
 </body>
 </html>

@@ -9,26 +9,33 @@
 </head>
 <body>
 <jsp:include page="menu.jsp" flush="false"></jsp:include>
-<div class="container bg-light" style="margin-left:23%; margin-top:2%; border-radius: 15px; width: 70%;">
-<p style="font-size:30px; text-align:center;">withdraw</p>
+<div class="container bg-light" style="margin-left:23%; margin-top:2%; border-radius: 15px; width: 70%;"><br>
+<p style="font-size:30px; text-align:center;">Withdraw Register</p>
 
 <form action ="/withdraw" method="post">
-날짜:<input type="date" name="regdate">
-계좌 : 
-<select name="account">
+<select name="account" class="form-control">
+<option hidden="true">계좌선택</option>
 <c:forEach items="${account }" var="account">
 <option value=${account.account }>${account.account }</option>
 </c:forEach>
 </select>
+<br>
 
-출금금액 : <input type="text" name="amount">
-출금항목 : <input type="text" name="category">
-회원 : <input type="text" name="id" value="${login }" readonly="readonly">
+<input type="date" name="regdate" class="form-control" >
+<br>
 
-<input type="submit" value="등록">
+<input type="text" name="amount" class="form-control" placeholder="출금금액">
+<br>
 
+<input type="text" name="category" class="form-control" placeholder="출금항목">
+<br>
+
+<input type="text" name="id" value="${login }"  class="form-control"readonly="readonly">
+<br>
+<input type="submit" value="등록" class="btn btn-primary">
+<br>
 </form>
-
+<br>
 </div>
 </body>
 </html>

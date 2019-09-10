@@ -2,8 +2,10 @@ package aca.mirim.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import aca.mirim.domain.AccountVO;
 import aca.mirim.domain.BankVO;
@@ -32,6 +34,27 @@ public interface AssetMapper {
 	
 	@Select("SELECT * FROM WITHDRAW WHERE id=#{id}")
 	public List<WithdrawVO> getWithdraw(String id);
+	
+	@Select("SELECT * FROM ACCOUNT WHERE account=#{account}")
+	public AccountVO accountchk(String account);
+	
+	@Select("SELECT * FROM DEPOSIT WHERE code=#{code}")
+	public DepositVO seldeposit(int code);
+	
+	@Select("SELECT * FROM WITHDRAW WHERE code=#{code}")
+	public WithdrawVO selwithdraw(int code);
+	
+	@Delete("DELETE FROM DEPOSIT WHERE code=#{code}")
+	public void deletedeposit(int code);
+	
+	@Delete("DELETE FROM WITHDRAW WHERE code=#{code}")
+	public void deletewithdraw(int code);
+	
+	@Update("UPDATE DEPOSIT SET regdate=#{regdate}, account=#{account},amount=#{amount},category=#{category} where code=#{code}")
+	public void updatedeposit(DepositVO vo);
+	
+	@Update("UPDATE WITHDRAW SET regdate=#{regdate}, account=#{account},amount=#{amount},category=#{category} where code=#{code}")
+	public void updatewithdraw(WithdrawVO vo);
 	
 	
 }

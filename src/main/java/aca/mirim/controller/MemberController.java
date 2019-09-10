@@ -9,8 +9,10 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import aca.mirim.domain.LoginDTO;
 import aca.mirim.domain.MemberVO;
@@ -35,11 +37,12 @@ public class MemberController {
 	}
 
 	@PostMapping("/login")
-	public String loginpost(LoginDTO dto,HttpSession session) {
+	public String loginpost(LoginDTO dto,HttpSession session,RedirectAttributes redirect) {
 		System.out.println("login post " + dto);
 		MemberVO vo = memService.login(dto);
 		if(vo==null) {
-			return "/login";
+			redirect.addAttribute("code", 1);
+			return "redirect:/fail";
 		}
 		session.setAttribute("login", vo.getId());
 		
@@ -61,7 +64,7 @@ public class MemberController {
 		memService.insertMember(vo);
 		session.removeAttribute("check");
 		
-		return "redirect:/index";
+		return "redirect:/login";
 	}
 
 	@GetMapping("/checkid")
@@ -135,5 +138,17 @@ public class MemberController {
 		System.out.println("findresult");
 	}
 	
-	
+	@GetMapping("/fail")
+	public void fail(@RequestParam("code")int code, Model model) {
+		System.out.println("fail" + code);
+		if(code==1) {
+			model.addAttribute("msg","아이디 또는 비밀번호를 다시 확인하세요.");
+			model.addAttribute("url","/login");
+		}
+		if(code==2) {
+			model.addAttribute("msg","이미 등록된 계좌입니다.");
+			model.addAttribute("url","/account");
+		}
+		
+	}
 }

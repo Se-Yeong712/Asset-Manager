@@ -53,6 +53,51 @@ public class AssetServiceImpl implements AssetService{
 		return accMapper.getWithdraw(id);
 	}
 
+	@Override
+	public Boolean accountchk(String account) {
+		AccountVO vo = accMapper.accountchk(account);
+		
+		if(vo==null) {
+			return false;
+		}
+		
+		return true;
+	}
+
+	@Override
+	public DepositVO seldeposit(int code) {
+		return accMapper.seldeposit(code);
+	}
+
+	@Override
+	public WithdrawVO selwithdraw(int code) {
+		return accMapper.selwithdraw(code);
+	}
+
+	@Override
+	public void deletedeposit(int code) {
+		accMapper.deletedeposit(code);
+	}
+
+	@Override
+	public void deletewithdraw(int code) {
+		accMapper.deletewithdraw(code);
+	}
+
+	@Override
+	public void updatedeposit(DepositVO vo) {
+		accMapper.updatedeposit(vo);
+		
+	}
+
+	@Override
+	public void updatewithdraw(WithdrawVO vo) {
+		accMapper.updatewithdraw(vo);
+		
+	}
+
+	
+	
 
 	
 
