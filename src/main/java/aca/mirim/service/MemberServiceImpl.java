@@ -40,4 +40,15 @@ public class MemberServiceImpl implements MemberService{
 		return memMapper.findpw(id, name);
 	}
 
+	@Override
+	public MemberVO getmember(String id) {
+		return memMapper.getMember(id);
+	}
+
+	@Override
+	public void updateMember(MemberVO vo) {
+		memMapper.updateMember(vo);
+		
+	}
+
 }

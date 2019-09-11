@@ -42,7 +42,7 @@ public class MemberController {
 		MemberVO vo = memService.login(dto);
 		if(vo==null) {
 			redirect.addAttribute("code", 1);
-			return "redirect:/fail";
+			return "redirect:/status";
 		}
 		session.setAttribute("login", vo.getId());
 		
@@ -58,13 +58,14 @@ public class MemberController {
 	}
 	
 	@PostMapping("/signup")
-	public String signuppost(MemberVO vo, HttpSession session) {
+	public String signuppost(MemberVO vo, HttpSession session,RedirectAttributes redirect) {
 		System.out.println("signup post ");
 		
 		memService.insertMember(vo);
 		session.removeAttribute("check");
 		
-		return "redirect:/login";
+		redirect.addAttribute("code", 6);
+		return "redirect:/status";
 	}
 
 	@GetMapping("/checkid")
@@ -88,6 +89,22 @@ public class MemberController {
 
 	}
 	
+	@GetMapping("/updatemember")
+	public void updatemember(Model model,HttpSession session) {
+		System.out.println("updatemember");
+		String id = (String)session.getAttribute("login");
+		MemberVO vo = memService.getmember(id);
+		
+		model.addAttribute("member", vo);
+	}
+	
+	@PostMapping("/updatemember")
+	public String updatememberpost(MemberVO vo,RedirectAttributes redirect) {
+		System.out.println("updatemember post");
+		memService.updateMember(vo);
+		redirect.addAttribute("code", 3);
+		return "redirect:/status";
+	}
 	
 
 	@GetMapping("/logout")
@@ -138,9 +155,9 @@ public class MemberController {
 		System.out.println("findresult");
 	}
 	
-	@GetMapping("/fail")
+	@GetMapping("/status")
 	public void fail(@RequestParam("code")int code, Model model) {
-		System.out.println("fail" + code);
+		System.out.println("status" + code);
 		if(code==1) {
 			model.addAttribute("msg","아이디 또는 비밀번호를 다시 확인하세요.");
 			model.addAttribute("url","/login");
@@ -148,6 +165,22 @@ public class MemberController {
 		if(code==2) {
 			model.addAttribute("msg","이미 등록된 계좌입니다.");
 			model.addAttribute("url","/account");
+		}
+		if(code==3) {
+			model.addAttribute("msg","정상적으로 회원정보가 수정되었습니다.");
+			model.addAttribute("url","/index");
+		}
+		if(code==4) {
+			model.addAttribute("msg","입금내역이 정상적으로 등록되었습니다.");
+			model.addAttribute("url","/deposit");
+		}
+		if(code==5) {
+			model.addAttribute("msg","출금내역이 정상적으로 등록되었습니다.");
+			model.addAttribute("url","/withdraw");
+		}
+		if(code==6) {
+			model.addAttribute("msg","회원가입이 정상적으로 처리되었습니다.");
+			model.addAttribute("url","/login");
 		}
 		
 	}

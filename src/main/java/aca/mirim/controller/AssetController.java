@@ -39,7 +39,7 @@ public class AssetController {
 		
 		if(accService.accountchk(vo.getAccount())) {
 			redirect.addAttribute("code", 2);
-			return "redirect:/fail";
+			return "redirect:/status";
 		}
 		
 		accService.insertaccount(vo);
@@ -57,12 +57,12 @@ public class AssetController {
 	}
 	
 	@PostMapping("/deposit")
-	public String depositpost(DepositVO vo) {
+	public String depositpost(DepositVO vo,RedirectAttributes redirect) {
 		System.out.println("deposit post");
 		accService.insertdeposit(vo);
 
-		
-		return "/index";
+		redirect.addAttribute("code", 4);
+		return "redirect:/status";
 	}
 	
 	
@@ -75,12 +75,12 @@ public class AssetController {
 	
 	
 	@PostMapping("/withdraw")
-	public String withdrawpost(WithdrawVO vo) {
+	public String withdrawpost(WithdrawVO vo,RedirectAttributes redirect) {
 		System.out.println("withdraw post");
 		accService.insertwithdraw(vo);
 
-		
-		return "/index";
+		redirect.addAttribute("code", 5);
+		return "redirect:/status";
 	}
 	
 	

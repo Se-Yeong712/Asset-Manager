@@ -44,7 +44,7 @@ style="width: 18%; height:100%; position: fixed; border-radius: 15px;">
       <a class="nav-link" href="/logout">로그아웃</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/logout">정보수정</a>
+      <a class="nav-link" href="/updatemember">정보수정</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/account">계좌등록</a>

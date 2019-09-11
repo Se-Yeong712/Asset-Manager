@@ -10,5 +10,7 @@ public interface MemberService {
 	public void insertMember(MemberVO vo);
 	public String findid(String pw, String name);
 	public String findpw(String id, String name);
+	public MemberVO getmember(String id);
+	public void updateMember(MemberVO vo);
 	
 }
