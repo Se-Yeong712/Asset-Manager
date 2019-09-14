@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -29,12 +30,6 @@ public interface AssetMapper {
 	@Insert("INSERT INTO WITHDRAW(REGDATE,ACCOUNT,AMOUNT,CATEGORY,ID) VALUES(#{regdate},#{account},#{amount},#{category},#{id})")
 	public void insertwithdraw(WithdrawVO vo);
 	
-	@Select("SELECT * FROM DEPOSIT WHERE id=#{id}")
-	public List<DepositVO> getDeposit(String id);
-	
-	@Select("SELECT * FROM WITHDRAW WHERE id=#{id}")
-	public List<WithdrawVO> getWithdraw(String id);
-	
 	@Select("SELECT * FROM ACCOUNT WHERE account=#{account}")
 	public AccountVO accountchk(String account);
 	
@@ -56,5 +51,23 @@ public interface AssetMapper {
 	@Update("UPDATE WITHDRAW SET regdate=#{regdate}, account=#{account},amount=#{amount},category=#{category} where code=#{code}")
 	public void updatewithdraw(WithdrawVO vo);
 	
+	
+	@Select("SELECT * FROM DEPOSIT WHERE id=#{id} ${term}")
+	public List<DepositVO> getDeposit(@Param("id")String id,@Param("term")String term);
+	
+	@Select("SELECT * FROM WITHDRAW WHERE id=#{id} ${term}")
+	public List<WithdrawVO> getWithdraw(@Param("id")String id,@Param("term")String term);
+	
+	
+	@Select("SELECT * FROM DEPOSIT WHERE id=#{id} AND account=#{accountlist} ${term}")
+	public List<DepositVO> getDepAccount(@Param("id")String id,@Param("term")String term,@Param("accountlist")String accountlist );
+	
+	@Select("SELECT * FROM WITHDRAW WHERE id=#{id} AND account=#{accountlist} ${term}")
+	public List<WithdrawVO> getWithAccount(@Param("id")String id,@Param("term")String term,@Param("accountlist")String accountlist );
+	
+	
+	
+	@Select("SELECT count(code) FROM ${table} WHERE id=#{id} AND regdate=trunc(sysdate,'iw')${day}")
+	public int getGraph(@Param("table") String table, @Param("id")String id,@Param("day")String day);
 	
 }

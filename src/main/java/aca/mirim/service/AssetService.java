@@ -5,6 +5,7 @@ import java.util.List;
 import aca.mirim.domain.AccountVO;
 import aca.mirim.domain.BankVO;
 import aca.mirim.domain.DepositVO;
+import aca.mirim.domain.Search;
 import aca.mirim.domain.WithdrawVO;
 
 public interface AssetService {
@@ -17,9 +18,6 @@ public interface AssetService {
 		
 		public void insertdeposit(DepositVO vo);		
 		public void insertwithdraw(WithdrawVO vo);
-		
-		public List<DepositVO> getDeposit(String id);		
-		public List<WithdrawVO> getWithdraw(String id);
 	
 		public Boolean accountchk(String account);
 		
@@ -31,5 +29,16 @@ public interface AssetService {
 		
 		public void updatedeposit(DepositVO vo);	
 		public void updatewithdraw(WithdrawVO vo);
+
 		
+		public List<DepositVO> getDeposit(String id, Search search);		
+		public List<WithdrawVO> getWithdraw(String id, Search search);
+		
+		public List<DepositVO> getDepAccount(String id, Search search,String accountlist);
+		public List<WithdrawVO> getWithAccount(String id, Search search,String accountlist);
+
+		
+		public int getGraph(String table, String id, String day);
 }
+
+

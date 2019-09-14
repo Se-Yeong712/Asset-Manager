@@ -61,7 +61,6 @@ function CheckId(){
 <input type="text" class="form-control" placeholder="User Name" style="border-radius: 25px; width:30%" name="name" id="name"> <br>
 <div class="form-inline form-group">
 <input type="text" class="form-control" placeholder="User Phone" style="border-radius: 25px; width:60%" name="phone" id="phone">
-<font color="red">&nbsp;&nbsp;-는 빼고 입력해주세요</font> 
 </div>
 <input type="email" class="form-control" placeholder="User Email" style="border-radius: 25px; width:60%"name="email" id="email"> <br>
 

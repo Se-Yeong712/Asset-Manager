@@ -90,23 +90,103 @@ public class AssetController {
 		 
 	}
 	
-	@PostMapping("/breakdown")
-	public String breakdownpost(Search search, Model model, HttpSession session) {
+	@GetMapping("/calendar")
+	public String calendar(Model model, HttpSession session) {
+		String id = (String) session.getAttribute("login");
+		
+		model.addAttribute("calendar","1");
+
+		
+		
+		return "breakdown";
+	}
+	
+	@GetMapping("/graph")
+	public String graph(Model model,HttpSession session) {
+		String id = (String) session.getAttribute("login");
+		model.addAttribute("graph","1");
+		model.addAttribute("depmon", accService.getGraph("deposit", id, ""));
+		model.addAttribute("deptues", accService.getGraph("deposit", id, "+1"));
+		model.addAttribute("depwednes", accService.getGraph("deposit", id, "+2"));
+		model.addAttribute("depthurs", accService.getGraph("deposit", id, "+3"));
+		model.addAttribute("depfri", accService.getGraph("deposit", id, "+4"));
+		model.addAttribute("depsatur", accService.getGraph("deposit", id, "+5"));
+		model.addAttribute("depsun", accService.getGraph("deposit", id, "+6"));
+		
+		
+		model.addAttribute("withmon", accService.getGraph("withdraw", id, ""));
+		model.addAttribute("withtues", accService.getGraph("withdraw", id, "+1"));
+		model.addAttribute("withwednes", accService.getGraph("withdraw", id, "+2"));
+		model.addAttribute("withthurs", accService.getGraph("withdraw", id, "+3"));
+		model.addAttribute("withfri", accService.getGraph("withdraw", id, "+4"));
+		model.addAttribute("withsatur", accService.getGraph("withdraw", id, "+5"));
+		model.addAttribute("withsun", accService.getGraph("withdraw", id, "+6"));
+		
+		
+		
+		return "breakdown";
+	}
+	
+	@GetMapping("/list")
+	public String list(Model model) {
+		model.addAttribute("selectlist","1");
+		return "breakdown";
+	}
+	
+	@PostMapping("/list")
+	public String listpost(Search search, Model model, HttpSession session) {
 		System.out.println("breakdown post");
 		String id = (String)session.getAttribute("login");
+		
+		System.out.println("searchVO " + search);
+		model.addAttribute("selectlist","1");
+		model.addAttribute("type",search.getType());
+		model.addAttribute("account",search.getAccount());
+		model.addAttribute("term",search.getTerm());
+		
+		
 		if(search.getType()==1) {
-			System.out.println("search 1");
-			model.addAttribute("type","1");
-			model.addAttribute("list",accService.getDeposit(id));
+			model.addAttribute("list",accService.getDeposit(id, search));
+			
 		}
-		else if(search.getType()==2){
-			System.out.println("search 2");
-			model.addAttribute("type","2");
-			model.addAttribute("list", accService.getWithdraw(id));
-		}	
+		
+		if(search.getType()==2) {
+			model.addAttribute("list",accService.getWithdraw(id, search));
+		}
+		
+		if(search.getAccount()==2) {
+			model.addAttribute("accountlist", accService.getAccount(id));
+		}
 		
 		return "/breakdown";
 	}
+	
+	@PostMapping("/accountlist")
+	public String accountpost(Search search, String accountlist, Model model, HttpSession session) {
+		System.out.println("accountlist post");
+		String id = (String)session.getAttribute("login");
+		
+		model.addAttribute("selectlist","1");
+		model.addAttribute("account","2");
+		model.addAttribute("type",search.getType());	
+		model.addAttribute("term",search.getTerm());
+		model.addAttribute("accountlist", accService.getAccount(id));
+		
+		if(search.getType()==1) {
+			model.addAttribute("list",accService.getDepAccount(id, search, accountlist));
+			
+		}
+		
+		if(search.getType()==2) {
+			model.addAttribute("list",accService.getWithAccount(id, search, accountlist));
+		}
+
+		
+		return "/breakdown";
+	}
+	
+	
+	
 	
 	@GetMapping("/dep")
 	public String getdep(@RequestParam("code")int code, Model model,HttpSession session) {

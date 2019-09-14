@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import aca.mirim.domain.AccountVO;
 import aca.mirim.domain.BankVO;
 import aca.mirim.domain.DepositVO;
+import aca.mirim.domain.Search;
 import aca.mirim.domain.WithdrawVO;
 import aca.mirim.mapper.AssetMapper;
 
@@ -42,17 +43,8 @@ public class AssetServiceImpl implements AssetService{
 		accMapper.insertwithdraw(vo);
 		
 	}
-
-	@Override
-	public List<DepositVO> getDeposit(String id) {
-		return accMapper.getDeposit(id);
-	}
-
-	@Override
-	public List<WithdrawVO> getWithdraw(String id) {
-		return accMapper.getWithdraw(id);
-	}
-
+	
+	
 	@Override
 	public Boolean accountchk(String account) {
 		AccountVO vo = accMapper.accountchk(account);
@@ -97,7 +89,80 @@ public class AssetServiceImpl implements AssetService{
 	}
 
 	
+	@Override
+	public List<DepositVO> getDeposit(String id, Search search) {
+		
+		String term="";
 	
+		if(search.getTerm()==1) {
+			term="and regdate BETWEEN trunc(sysdate,'iw') AND trunc(sysdate,'iw')+6";
+		}
+		else if(search.getTerm()==2) {
+			term="and regdate BETWEEN trunc(sysdate,'mm') AND last_day(sysdate)";
+		}
+		else if(search.getTerm()==3){
+			term="and to_char(regdate,'yyyy')=to_char(sysdate,'yyyy')";
+		}
+		return accMapper.getDeposit(id,term);
+		
+	}
+
+	@Override
+	public List<WithdrawVO> getWithdraw(String id, Search search) {
+		String term="";
+		
+		if(search.getTerm()==1) {
+			term="and regdate BETWEEN trunc(sysdate,'iw') AND trunc(sysdate,'iw')+6";
+		}
+		else if(search.getTerm()==2) {
+			term="and regdate BETWEEN trunc(sysdate,'mm') AND last_day(sysdate)";
+		}
+		else if(search.getTerm()==3){
+			term="and to_char(regdate,'yyyy')=to_char(sysdate,'yyyy')";
+		}
+		return accMapper.getWithdraw(id, term);
+	}
+	
+	
+	@Override
+	public List<DepositVO> getDepAccount(String id, Search search,String accountlist) {
+		
+		String term="";
+	
+		if(search.getTerm()==1) {
+			term="and regdate BETWEEN trunc(sysdate,'iw') AND trunc(sysdate,'iw')+6";
+		}
+		else if(search.getTerm()==2) {
+			term="and regdate BETWEEN trunc(sysdate,'mm') AND last_day(sysdate)";
+		}
+		else if(search.getTerm()==3){
+			term="and to_char(regdate,'yyyy')=to_char(sysdate,'yyyy')";
+		}
+		return accMapper.getDepAccount(id, term, accountlist);
+		
+	}
+
+	@Override
+	public List<WithdrawVO> getWithAccount(String id, Search search,String accountlist) {
+		String term="";
+		
+		if(search.getTerm()==1) {
+			term="and regdate BETWEEN trunc(sysdate,'iw') AND trunc(sysdate,'iw')+6";
+		}
+		else if(search.getTerm()==2) {
+			term="and regdate BETWEEN trunc(sysdate,'mm') AND last_day(sysdate)";
+		}
+		else if(search.getTerm()==3){
+			term="and to_char(regdate,'yyyy')=to_char(sysdate,'yyyy')";
+		}
+		return accMapper.getWithAccount(id, term, accountlist);
+	}
+
+	@Override
+	public int getGraph(String table, String id, String day) {
+		
+		return accMapper.getGraph(table, id, day);
+	}
 
 	
 

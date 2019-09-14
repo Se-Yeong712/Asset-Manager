@@ -3,8 +3,8 @@ package aca.mirim.domain;
 public class Search {
 
 	private int type;
-	private int sort;
 	private int account;
+	private int term;
 	
 	public int getType() {
 		return type;
@@ -12,12 +12,7 @@ public class Search {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public int getSort() {
-		return sort;
-	}
-	public void setSort(int sort) {
-		this.sort = sort;
-	}
+
 	public int getAccount() {
 		return account;
 	}
@@ -25,11 +20,17 @@ public class Search {
 		this.account = account;
 	}
 	
+	public int getTerm() {
+		return term;
+	}
+	public void setTerm(int term) {
+		this.term = term;
+	}
 	@Override
 	public String toString() {
-		return "SearchVO [type=" + type + ", sort=" + sort + ", account=" + account + "]";
+		return "Search [type=" + type + ", account=" + account + ", term=" + term + "]";
 	}
-	
+
 	
 	
 }
