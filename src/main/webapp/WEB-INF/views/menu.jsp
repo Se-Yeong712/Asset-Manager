@@ -41,6 +41,9 @@ style="width: 18%; height:100%; position: fixed; border-radius: 15px;">
 	${login }님 환영합니다.
 	<hr> 
 	<li class="nav-item">
+      <a class="nav-link" href="/index">메인화면</a>
+    </li>
+	<li class="nav-item">
       <a class="nav-link" href="/logout">로그아웃</a>
     </li>
     <li class="nav-item">

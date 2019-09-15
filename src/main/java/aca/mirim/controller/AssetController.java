@@ -2,6 +2,7 @@ package aca.mirim.controller;
 
 
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -91,15 +92,36 @@ public class AssetController {
 	}
 	
 	@GetMapping("/calendar")
-	public String calendar(Model model, HttpSession session) {
+	public String calendar(Model model) {
+		model.addAttribute("calendar","1");	
+		return "breakdown";
+	}
+	
+	@PostMapping("/calendar")
+	public String calendarpost(Model model, HttpSession session, Date date) {
 		String id = (String) session.getAttribute("login");
+		model.addAttribute("calendar","1");	
+		if(accService.getCalendar("deposit", id, date)==null) {
+			model.addAttribute("caldep",0);	
+		}
+		else {
+			model.addAttribute("caldep",accService.getCalendar("deposit", id, date));	
+		}
 		
-		model.addAttribute("calendar","1");
+		if(accService.getCalendar("withdraw", id, date)==null) {
+			model.addAttribute("calwith",0);	
+		}
+		else {
+			
+			model.addAttribute("calwith",accService.getCalendar("withdraw", id, date));	
+		}
+		
 
-		
 		
 		return "breakdown";
 	}
+	
+	
 	
 	@GetMapping("/graph")
 	public String graph(Model model,HttpSession session) {

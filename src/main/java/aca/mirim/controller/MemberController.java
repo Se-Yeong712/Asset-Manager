@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import aca.mirim.domain.LoginDTO;
 import aca.mirim.domain.MemberVO;
+import aca.mirim.service.AssetService;
 import aca.mirim.service.MemberService;
 
 @Controller
@@ -23,11 +24,23 @@ public class MemberController {
 	
 	@Autowired
 	MemberService memService;
+	
+	@Autowired
+	AssetService accService;
 
 
 	@GetMapping("/index")
-	public void index() {
+	public void index(Model model, HttpSession session) {
 		System.out.println("index get");
+		
+		if(session.getAttribute("login")!=null) {
+			String id = (String) session.getAttribute("login");
+			model.addAttribute("category", accService.getcategory(id));
+			model.addAttribute("impulse",accService.getImpulse(id));
+			
+			
+		}
+		
 	}
 	
 
@@ -47,7 +60,7 @@ public class MemberController {
 		session.setAttribute("login", vo.getId());
 		
 		
-		return "/index";
+		return "redirect:/index";
 	
 	}
 	

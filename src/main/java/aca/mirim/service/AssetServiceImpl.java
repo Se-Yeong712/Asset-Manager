@@ -1,5 +1,6 @@
 package aca.mirim.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,12 @@ import org.springframework.stereotype.Service;
 import aca.mirim.domain.AccountVO;
 import aca.mirim.domain.BankVO;
 import aca.mirim.domain.DepositVO;
+import aca.mirim.domain.Impulse;
 import aca.mirim.domain.Search;
 import aca.mirim.domain.WithdrawVO;
+import aca.mirim.domain.Category;
+import aca.mirim.domain.getDepositVO;
+import aca.mirim.domain.getWithdrawVO;
 import aca.mirim.mapper.AssetMapper;
 
 @Service
@@ -57,12 +62,12 @@ public class AssetServiceImpl implements AssetService{
 	}
 
 	@Override
-	public DepositVO seldeposit(int code) {
+	public getDepositVO seldeposit(int code) {
 		return accMapper.seldeposit(code);
 	}
 
 	@Override
-	public WithdrawVO selwithdraw(int code) {
+	public getWithdrawVO selwithdraw(int code) {
 		return accMapper.selwithdraw(code);
 	}
 
@@ -162,6 +167,21 @@ public class AssetServiceImpl implements AssetService{
 	public int getGraph(String table, String id, String day) {
 		
 		return accMapper.getGraph(table, id, day);
+	}
+
+	@Override
+	public Integer getCalendar(String table, String id, Date caldate) {
+		return accMapper.getCalendar(table, id, caldate);
+	}
+
+	@Override
+	public List<Category> getcategory(String id) {
+		return accMapper.getcategory(id);
+	}
+
+	@Override
+	public Impulse getImpulse(String id) {
+		return accMapper.getImpulse(id);
 	}
 
 	

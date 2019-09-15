@@ -98,17 +98,43 @@
 			</table>
 		</c:if>
 
-		<c:if test="${calendar==1 }">
+<c:if test="${calendar==1 }">
+<form action="/calendar" method="post">
+<hr>
+<div class="form-inline form-group">
+<input type="date" name="date" class="form-control">
+<input type="submit" class="btn btn-dark" value="검색">
+</div>
+
+</form>
+<hr>
+<p class="text-primary" style="text-align:center; font-size:20px">선택하신 날의 금액내역은 다음과 같습니다.</p>
+<div class="form-inline" style="margin-left:10%">
+<div class="card" style="width:40%">
+    <div class="card-body">
+      <h4 class="card-title">입금내역</h4>
+      <p class="card-text">총 ${caldep }원</p>
+      <a href="/list" class="card-link">내역 보기</a>
+      <a href="/graph" class="card-link">소비그래프 보기</a>
+    </div>
+</div>
+<div style="width: 3%"></div>
+<div class="card" style="width:40%">
+    <div class="card-body">
+      <h4 class="card-title">출금내역</h4>
+      <p class="card-text">총 ${calwith }원</p>
+      <a href="/list" class="card-link">내역 보기</a>
+      <a href="/graph" class="card-link">소비그래프 보기</a>
+    </div>
+</div>
+</div>
 
 
 
 
-
-
-
-		</c:if>
+</c:if>
 <c:if test="${graph==1}">
-
+<hr>
 			<canvas id="chartjs-0" class="chartjs" width="undefined"
 				height="undefined"></canvas>
 			<script>

@@ -22,6 +22,12 @@
 </select>
 <br>
 
+<div class="form-inline from-group">
+<input type="text" class="form-control" value="${content.bank }" style="width:50%">
+<input type="text" class="form-control" value="${content.aname }"style="width:50%">
+</div>
+<br>
+
 <input type="date" name="regdate" class="form-control" value="${content.regdate }" >
 <br>
 
@@ -52,6 +58,12 @@
 <option value=${account.account }>${account.account }</option>
 </c:forEach>
 </select>
+<br>
+
+<div class="form-inline from-group">
+<input type="text" class="form-control" value="${content.bank }" style="width:50%">
+<input type="text" class="form-control" value="${content.aname }"style="width:50%">
+</div>
 <br>
 
 <input type="date" name="regdate" class="form-control" value="${content.regdate }" >
