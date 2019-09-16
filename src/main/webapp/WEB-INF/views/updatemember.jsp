@@ -53,7 +53,6 @@ function blank(){
 <input type="text" class="form-control" value="${member.name}"style="border-radius: 25px; width:60%" name="name" id="name"> <br>
 <div class="form-inline form-group">
 <input type="text" class="form-control" value="${member.phone}"style="border-radius: 25px; width:60%" name="phone" id="phone">
-<font color="red">&nbsp;&nbsp;-는 빼고 입력해주세요</font> 
 </div>
 <input type="email" class="form-control" value="${member.email}" style="border-radius: 25px; width:60%"name="email" id="email"> <br>
 

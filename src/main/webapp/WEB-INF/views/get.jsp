@@ -42,7 +42,7 @@
 
 <input type="hidden" name="code"  value="${content.code }" >
 
-<input type="button" value="목록" class="btn btn-primary" onclick="location.href='/breakdown'">
+<input type="button" value="목록" class="btn btn-primary" onclick="history.go(-1)">
 <input type="submit" value="수정" class="btn btn-info">
 <input type="button" value="삭제" class="btn btn-danger" onclick="location.href='/deletedep?code=${content.code}'">
 </form>
@@ -79,7 +79,7 @@
 <br>
 <input type="hidden" name="code"  value="${content.code }" >
 
-<input type="button" value="목록" class="btn btn-primary" onclick="location.href='/breakdown'">
+<input type="button" value="목록" class="btn btn-primary" onclick="history.go(-1)">
 <input type="submit" value="수정" class="btn btn-info">
 <input type="button" value="삭제" class="btn btn-danger" onclick="location.href='/deletewith?code=${content.code}'">
 </form>
