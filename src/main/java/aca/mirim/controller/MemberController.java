@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import aca.mirim.domain.Impulse;
 import aca.mirim.domain.LoginDTO;
 import aca.mirim.domain.MemberVO;
 import aca.mirim.service.AssetService;
@@ -36,7 +37,24 @@ public class MemberController {
 		if(session.getAttribute("login")!=null) {
 			String id = (String) session.getAttribute("login");
 			model.addAttribute("category", accService.getcategory(id));
-			model.addAttribute("impulse",accService.getImpulse(id));
+			
+			Impulse impulse = accService.getImpulse(id);
+			
+			if(impulse.getOne()>=1) {
+				impulse.setOne(impulse.getOne()-impulse.getTwo());
+				System.out.println(impulse);
+			}
+			if(impulse.getTwo()>=1) {
+				impulse.setTwo(impulse.getTwo()-impulse.getThree());
+				System.out.println(impulse);
+			}
+			if(impulse.getThree()>=1) {
+				impulse.setThree(impulse.getThree()-impulse.getFour());
+				System.out.println(impulse);
+			}
+			
+											
+			model.addAttribute("impulse",impulse);
 			
 			
 		}
@@ -197,4 +215,21 @@ public class MemberController {
 		}
 		
 	}
+	
+	
+	@GetMapping("/develop")
+	public void develop(Model model) {
+		System.out.println("developer page");
+		model.addAttribute("table", memService.getTable());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

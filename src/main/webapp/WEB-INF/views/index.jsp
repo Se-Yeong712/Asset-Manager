@@ -16,7 +16,7 @@
 <br>
 <br>
 <div class="card">
-<img class="card-img-top" src="https://t1.daumcdn.net/cfile/tistory/2131954D58A6901D3A" alt="Card image" style="width:70%">
+<img class="card-img-top" src="https://t1.daumcdn.net/cfile/tistory/2131954D58A6901D3A" alt="Card image" style="width:70%;">
     <div class="card-body">
       <h4 class="card-title">자산관리시작하기</h4>
       <p class="card-text">지금 바로 자산관리 시작하세요!</p>

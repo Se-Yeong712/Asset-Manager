@@ -1,7 +1,10 @@
 package aca.mirim.service;
 
+import java.util.List;
+
 import aca.mirim.domain.LoginDTO;
 import aca.mirim.domain.MemberVO;
+import aca.mirim.domain.Table;
 
 public interface MemberService {
 	
@@ -12,5 +15,6 @@ public interface MemberService {
 	public String findpw(String id, String name);
 	public MemberVO getmember(String id);
 	public void updateMember(MemberVO vo);
+	public List<Table> getTable();
 	
 }

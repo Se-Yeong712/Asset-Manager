@@ -1,5 +1,7 @@
 package aca.mirim.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -7,6 +9,7 @@ import org.apache.ibatis.annotations.Update;
 
 import aca.mirim.domain.LoginDTO;
 import aca.mirim.domain.MemberVO;
+import aca.mirim.domain.Table;
 
 public interface MemberMapper {
 	
@@ -30,4 +33,8 @@ public interface MemberMapper {
 	
 	@Update("UPDATE MEMBER SET pw=#{pw},name=#{name},phone=#{phone},email=#{email} WHERE id=#{id}")
 	public void updateMember(MemberVO vo);
+	
+	@Select("SELECT *  FROM ALL_TAB_COMMENTS where owner='AMS' and table_type='TABLE'")
+	public List<Table> getTable();
+	
 }
